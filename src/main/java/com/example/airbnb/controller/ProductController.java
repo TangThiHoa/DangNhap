@@ -19,19 +19,19 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/products")
+@RequestMapping("")
 public class ProductController {
     @Autowired
     IProductService productService;
     @Autowired
     ICategoryService categoryService;
 
-    @GetMapping("")     //Hiển thị
+    @GetMapping("/products  ")     //Hiển thị
     public ResponseEntity<Iterable<Product>> findAllProduct() {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("")     //Thêm mới
+    @PostMapping("/admin/products")     //Thêm mới
     public ResponseEntity add(@Valid @RequestBody Product product) {
         productService.save(product);
         return new ResponseEntity(HttpStatus.OK);

@@ -1,13 +1,13 @@
 function loadData() {
     $.ajax({
-        headers: {
-            Authorization: 'Bearer ' + token
-        },
+        // headers: {
+        //     Authorization: 'Bearer ' + token
+        // },
         type: "GET",
         url: "http://localhost:8000/products",
         success: function (products) {
             console.log(products)
-            document.getElementById("product").innerHTML = ` <div class="col-3">List category</div>
+            document.getElementById("product").innerHTML = ` <div class="col-3"></div>
     <div class="col-9">
         <h3>List product</h3>
         <table class="table">

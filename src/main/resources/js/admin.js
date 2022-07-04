@@ -27,3 +27,26 @@ function saveProduct() {
         }
     })
 }
+// let edit = document.getElementById("display")
+
+// function showEditForm(id) {
+//     $.ajax({
+//         headers:{
+//             Authorization: 'Bearer ' + token
+//         },
+//         type: 'GET',
+//         url: 'http://localhost:8080/products/' + id,
+//         success: function (product) {
+//             let str = `
+//                     <input  value="${product.name}" id="name">
+//                 <input value="${product.price}" id="price">
+//                 <input value="${product.category.id}" id="category">
+//                 <button onclick="update(${product.id})">Edit</button>`
+//
+//             edit.innerHTML = str;
+//         },
+//         error: function (error) {
+//             console.log(error)
+//         }
+//     })
+// }
