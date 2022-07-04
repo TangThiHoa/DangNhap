@@ -59,7 +59,7 @@
     </div>
 </div>
 <!-- Modal Add-->
-<div class="modal fade" id="registerModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -86,12 +86,43 @@
         </div>
     </div>
 </div>
+<!-- Modal Edit-->
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Edit Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formEdit">
+                    <input type="hidden" id="p.id" name="id">
+                    <label> Name product:</label>
+                    <input type="text" name="name" id="p.name" class="form-control"><br>
+                    <label> Price :</label>
+                    <input type="text" name="price" id="p.price" class="form-control"><br>
+                    <label> Category :</label>
+                    <input type="text" name="category" id="p.category" class="form-control"><br>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="update()">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row" id="product">
 </div>
 <script>
 
-    let token = ""
+    let accessToken = ""
+    let idUser = 0;
     checkLogin()
+
 
     function showFormRegister() {
         $('#registerModal2').modal('show');
@@ -114,22 +145,21 @@
     }
 
     function formAddData() {
-        $('#registerModal3').modal('show');
+        $('#exampleModal3').modal('show');
         document.getElementById("register").innerHTML = "";
         let button = `<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveProduct()">Register
                 </button>`
         document.getElementById("button").innerHTML = button
     }
-
     function logOut() {
         document.getElementById("product").innerHTML = ""
-        token = ""
+        accessToken = ""
         checkLogin()
     }
 
     function checkLogin() {
-        if (token == "") {
+        if (accessToken == "") {
             document.getElementById("navbarSupportedContent").innerHTML = `   <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="#" onclick="loadData()">Home <span

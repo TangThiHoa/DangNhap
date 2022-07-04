@@ -16,12 +16,9 @@ function login() {
         data: JSON.stringify(user),
         success: function (data) {
             console.log(data.accessToken)
-            token = data.accessToken
+            accessToken = data.accessToken
+            idUser = data.id;
             checkLogin()
-            // document.getElementById("formRegister").innerHTML = str
-            // document.getElementById("formLogin").innerHTML = ""
-
         },
     })
 }
-

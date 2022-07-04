@@ -26,7 +26,7 @@ public class ProductController {
     @Autowired
     ICategoryService categoryService;
 
-    @GetMapping("/products  ")     //Hiển thị
+    @GetMapping("/products")     //Hiển thị
     public ResponseEntity<Iterable<Product>> findAllProduct() {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
@@ -37,7 +37,7 @@ public class ProductController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")         //Tìm theo id
+    @GetMapping("/admin/products/{id}")         //Tìm theo id
     public ResponseEntity<Product> findProductById(@PathVariable Long id) {
         Optional<Product> product = productService.findById(id);
         if (!product.isPresent()) {
@@ -46,7 +46,7 @@ public class ProductController {
         return new ResponseEntity<>(product.get(), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")           //Chỉnh sửa theo id
+    @PutMapping("/admin/products/{id}")           //Chỉnh sửa theo id
     public ResponseEntity updateProduct(@RequestBody Product product, @PathVariable Long id) {
         Optional<Product> productOptional = productService.findById(id);
         if (!productOptional.isPresent()) {
@@ -57,7 +57,7 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")              //Xóa theo id
+    @DeleteMapping("/admin/{id}")              //Xóa theo id
     public ResponseEntity<Product> deleteProduct(@PathVariable Long id) {
         Optional<Product> productOptional = productService.findById(id);
         if (!productOptional.isPresent()) {
