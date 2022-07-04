@@ -42,11 +42,24 @@ function loadTableProduct(products) {
                     <td>${products[i].price}</td>
                     <td>${products[i].category.name}</td> 
                     <td> <button type="button" onclick="formEditData(${products[i].id})"> Edit </button></td>
-                    <td> <button type="button" onclick="showDeleteForm(${products[i].id})"> Delete</button></td>
+                    <td> <button type="button" onclick="deleteProduct(${products[i].id})"> Delete</button></td>
                 </tr>`
     }
 
     document.getElementById("table").innerHTML = str;
+}
+
+function deleteProduct(id) {
+    $.ajax({
+        headers: {
+            Authorization: 'Bearer ' + accessToken
+        },
+        type: "DELETE",
+        url: "http://localhost:8000/admin/products/" + id,
+        success: function () {                                                             //xử lý khi thành công trả về list
+            loadData()
+        }
+    });
 }
 
 function formEditData(id) {
@@ -59,19 +72,22 @@ function formEditData(id) {
         url: 'http://localhost:8000/admin/products/' + id,
         success: function (data) {
             console.log(data)
-            document.getElementById("p.name").value = data.name;
-            document.getElementById("p.price").value = data.price;
-            document.getElementById("p.category").value = data.category.name;
+            document.getElementById("pname").value = data.name;
+            document.getElementById("pid").value = data.id;
+            document.getElementById("pprice").value = data.price;
+            document.getElementById("pcategory").value = data.category.name;
         },
         error: function (error) {
             console.log(error)
         }
     })
 }
-function update(id) {
-    let name = document.getElementById("name").value;
-    let price = document.getElementById("price").value;
-    let categoryId = document.getElementById("category").value;
+
+function update() {
+    let id = document.getElementById("pid").value;
+    let name = document.getElementById("pname").value;
+    let price = document.getElementById("pprice").value;
+    let categoryId = document.getElementById("pcategory").value;
     let pro = {
         id: id,
         name: name,
