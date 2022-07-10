@@ -1,25 +1,27 @@
+
 document.getElementById('content').innerHTML = `
+<div class="hoa"> 
 <div class="main">
             <input type="checkbox" id="chk" aria-hidden="true">
-
             <div class="signup" id="su">
                 <div>
                     <label for="chk" aria-hidden="true">Sign up</label>
             <input type="text" name="username" id="username" placeholder="User name" required="">
             <input type="text" name="password" id="password" placeholder="Password" required="">
             <input type="text" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required="">
-            <button onclick="singUp()">Sign up</button>
+            <button onclick="signUp()">Sign up</button>
         </div>
     </div>
 
     <div class="login" id="ln">
         <div>
             <label for="chk" aria-hidden="true">Login</label>
-            <input type="username" name="username" placeholder="User name" required="" >
-            <input type="password" name="password" placeholder="Password" required="">
+            <input type="text" name="username" id="username1" placeholder="User name">
+            <input type="password" name="password" id="password1" placeholder="Password">
             <button onclick="login()">Login</button>
         </div>
     </div>
+</div>
 </div>
 `
 let id;
@@ -28,12 +30,14 @@ let storageKey = 'token';
 let storageKeyId = 'id';
 
 function login() {
-    let userName = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    let userName = document.getElementById("username1").value;
+    let password = document.getElementById("password1").value;
+    console.log(userName)
     let user = {
         username: userName,
         password: password,
     }
+    console.log(user)
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -43,14 +47,11 @@ function login() {
         url: "http://localhost:8000/login",
         data: JSON.stringify(user),
         success: function (data) {
-            alert("Đăng nhập thành công! ")
-            console.log(data)
             token = data.accessToken;
             id = data.id;
             localStorage.setItem(storageKey, token)
             localStorage.setItem(storageKeyId, id)
-
-
+            home()
         },
         error: function (error) {
             alert("Đăng nhập thất bại!")
@@ -60,7 +61,7 @@ function login() {
     })
 }
 
-function singUp() {
+function signUp() {
     let userName = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
@@ -78,10 +79,10 @@ function singUp() {
         url: "http://localhost:8000/register",
         data: JSON.stringify(user),
         success: function () {
+            alert("Đăng kí thành công!")
             $('#username').val("");
             $('#password').val("");
             $('#confirmPassword').val("");
-            alert("Đăng kí thành công!")
 
         },
         error: function (error) {
@@ -90,4 +91,5 @@ function singUp() {
         }
     })
 }
+
 

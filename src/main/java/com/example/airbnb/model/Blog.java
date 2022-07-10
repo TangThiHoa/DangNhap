@@ -10,10 +10,10 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Title;
+    private String title;
     private LocalDateTime dateCreated;
-    private String Content;
-    private String Avatar;
+    private String content;
+    private String avatar;
     private String shortDescription;
     private String status;
     @ManyToOne
@@ -31,11 +31,11 @@ public class Blog {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public LocalDateTime getDateCreated() {
@@ -47,19 +47,19 @@ public class Blog {
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
     public String getAvatar() {
-        return Avatar;
+        return avatar;
     }
 
     public void setAvatar(String avatar) {
-        Avatar = avatar;
+        this.avatar = avatar;
     }
 
     public String getShortDescription() {
