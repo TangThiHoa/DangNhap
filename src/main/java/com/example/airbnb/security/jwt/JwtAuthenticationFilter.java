@@ -1,7 +1,7 @@
 package com.example.airbnb.security.jwt;
 
-import com.example.airbnb.service.UserService;
-import com.example.airbnb.service.impl.JwtService;
+import com.example.airbnb.security.service.UserService;
+import com.example.airbnb.security.service.impl.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

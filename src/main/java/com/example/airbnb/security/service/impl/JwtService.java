@@ -1,4 +1,4 @@
-package com.example.airbnb.service.impl;
+package com.example.airbnb.security.service.impl;
 
 
 import com.example.airbnb.model.UserPrinciple;

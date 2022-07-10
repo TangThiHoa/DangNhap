@@ -4,12 +4,11 @@ package com.example.airbnb.security;
 import com.example.airbnb.security.jwt.CustomAccessDeniedHandler;
 import com.example.airbnb.security.jwt.JwtAuthenticationFilter;
 import com.example.airbnb.security.jwt.RestAuthenticationEntryPoint;
-import com.example.airbnb.service.UserService;
-import com.example.airbnb.service.impl.UserServiceImpl;
+import com.example.airbnb.security.service.UserService;
+import com.example.airbnb.security.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -73,7 +72,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/**");
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
-                .antMatchers("/login", "/register", "/hello", "/products/**").permitAll()
+                .antMatchers("/login", "/register", "/hello" ).permitAll()
                 .antMatchers("/users/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 //                .antMatchers(HttpMethod.GET

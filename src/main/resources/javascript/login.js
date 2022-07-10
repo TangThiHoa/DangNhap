@@ -15,14 +15,13 @@ document.getElementById('content').innerHTML = `
     <div class="login" id="ln">
         <div>
             <label for="chk" aria-hidden="true">Login</label>
-            <input type="username" name="username" placeholder="User name" required="">
+            <input type="username" name="username" placeholder="User name" required="" >
             <input type="password" name="password" placeholder="Password" required="">
             <button onclick="login()">Login</button>
         </div>
     </div>
 </div>
 `
-
 let id;
 let token;
 let storageKey = 'token';
@@ -44,19 +43,22 @@ function login() {
         url: "http://localhost:8000/login",
         data: JSON.stringify(user),
         success: function (data) {
+            alert("Đăng nhập thành công! ")
             console.log(data)
             token = data.accessToken;
             id = data.id;
             localStorage.setItem(storageKey, token)
             localStorage.setItem(storageKeyId, id)
-            // main();
+
+
         },
         error: function (error) {
+            alert("Đăng nhập thất bại!")
             console.log(error)
+
         }
     })
 }
-
 
 function singUp() {
     let userName = document.getElementById("username").value;
@@ -80,10 +82,11 @@ function singUp() {
             $('#password').val("");
             $('#confirmPassword').val("");
             alert("Đăng kí thành công!")
-            singUp()
+
         },
         error: function (error) {
             console.log(error)
+            alert("Đăng kí thất bại!")
         }
     })
 }

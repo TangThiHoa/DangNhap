@@ -1,4 +1,4 @@
-package com.example.airbnb.service;
+package com.example.airbnb.security.service;
 
 
 import com.example.airbnb.model.Role;

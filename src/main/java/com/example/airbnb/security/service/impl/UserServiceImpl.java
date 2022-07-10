@@ -1,9 +1,9 @@
-package com.example.airbnb.service.impl;
+package com.example.airbnb.security.service.impl;
 
 import com.example.airbnb.model.User;
 import com.example.airbnb.model.UserPrinciple;
 import com.example.airbnb.repository.UserRepository;
-import com.example.airbnb.service.UserService;
+import com.example.airbnb.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

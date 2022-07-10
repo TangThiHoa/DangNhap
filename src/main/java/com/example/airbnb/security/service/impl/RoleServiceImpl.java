@@ -1,8 +1,8 @@
-package com.example.airbnb.service.impl;
+package com.example.airbnb.security.service.impl;
 
 import com.example.airbnb.model.Role;
 import com.example.airbnb.repository.RoleRepository;
-import com.example.airbnb.service.RoleService;
+import com.example.airbnb.security.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
