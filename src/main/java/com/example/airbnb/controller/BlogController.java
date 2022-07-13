@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @RestController
@@ -29,6 +31,10 @@ public class BlogController {
 
     @PostMapping
     public ResponseEntity save(@RequestBody Blog blog) {
+        LocalDateTime time = LocalDateTime.now();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String timePost = time.format(fmt);
+        blog.setDateCreated(timePost);
         blogService.save(blog);
         return new ResponseEntity<>(HttpStatus.OK);
     }

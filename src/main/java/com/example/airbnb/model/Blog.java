@@ -11,9 +11,9 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private LocalDateTime dateCreated;
+    private String dateCreated;
     private String content;
-    private String avatar;
+    private String img;
     private String shortDescription;
     private String status;
     @ManyToOne
@@ -38,11 +38,11 @@ public class Blog {
         this.title = title;
     }
 
-    public LocalDateTime getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(LocalDateTime dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
@@ -54,12 +54,12 @@ public class Blog {
         this.content = content;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getImg() {
+        return img;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getShortDescription() {

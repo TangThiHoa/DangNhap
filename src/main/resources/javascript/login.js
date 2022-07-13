@@ -47,14 +47,13 @@ function login() {
         url: "http://localhost:8000/login",
         data: JSON.stringify(user),
         success: function (data) {
-            token = data.accessToken;
+
             id = data.id;
-            localStorage.setItem(storageKey, token)
+            localStorage.setItem(storageKey, data.accessToken)
             localStorage.setItem(storageKeyId, id)
             home()
         },
         error: function (error) {
-            alert("Đăng nhập thất bại!")
             console.log(error)
 
         }
@@ -87,7 +86,6 @@ function signUp() {
         },
         error: function (error) {
             console.log(error)
-            alert("Đăng kí thất bại!")
         }
     })
 }
